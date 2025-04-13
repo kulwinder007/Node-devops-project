@@ -14,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 const redisClient = new Redis(process.env.REDIS_URL);
-
+app.get('/health', (req, res) => res.sendStatus(200));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
