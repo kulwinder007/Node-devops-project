@@ -30,8 +30,11 @@ app.use(express.json());
 app.use((req, res, next) => {
   logger.info(`Received ${req.method} request to ${req.url}`);
   logger.info(`Request body, ${req.body}`);
+
   next();
 });
+
+app.get('/health', (req, res) => res.sendStatus(200));
 
 //DDos protection and rate limiting
 const rateLimiter = new RateLimiterRedis({
